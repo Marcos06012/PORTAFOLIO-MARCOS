@@ -11,16 +11,16 @@ export default function Skills() {
     ];
 
     return (
-        <section classname="py-20 text-center">
-            <h2 classname="text-3xl font-bold mb-10">
+        <section className="py-20 text-center">
+            <h2 className="text-3xl font-bold mb-10">
                 Tecnologías
             </h2>
 
-            <div classname="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
                 {skills.map((skill) => (
                     <span
                         key={skill}
-                        classname="border px-4 py-2 rounded"
+                        className="border px-4 py-2 rounded"
                     >
                         {skill}
                     </span>

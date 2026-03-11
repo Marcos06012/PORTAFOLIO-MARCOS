@@ -15,7 +15,7 @@ export default function Hero() {
                 </button>
             </div>
 
-            <button className="border px-6 py-3 rounded">
+            <button className="border bg-blue-500 text-white px-6 py-3 rounded">
                 Contactame
             </button>
         </section>

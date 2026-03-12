@@ -1,9 +1,17 @@
+"use client";
+import {motion} from 'framer-motion';
+
 export default function Hero() {
     return (
         <section className="text-center py-32">
-            <h1 className="text-5xl font-bold mb-4">
+            <motion.h1 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-5xl font-bold mb-4"
+            >
                 Hola, soy Marcos
-            </h1>
+            </motion.h1>
 
             <p className="text-xl text-gray-500">
                 Frontend Developer

@@ -5,12 +5,6 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -74,14 +68,14 @@ body {
 }
 
 .animate-aurora {
-  animation: aurora 12s ease-in-out infinite;
+  animation: aurora 3s ease-in-out infinite;
 }
 
 .animate-aurora2 {
-  animation: aurora2 14s ease-in-out infinite;
+  animation: aurora2 3s ease-in-out infinite;
 }
 
 .animate-aurora3 {
-  animation: aurora3 16s ease-in-out infinite;
+  animation: aurora3 3s ease-in-out infinite;
 }
 

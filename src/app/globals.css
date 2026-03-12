@@ -79,3 +79,7 @@ body {
   animation: aurora3 3s ease-in-out infinite;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+

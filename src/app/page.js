@@ -11,11 +11,11 @@ export default function Home() {
     <main>
       <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
 
-        <div className="absolute w-175 h-175 bg-green-500 rounded-full blur-[200px] opacity-40 animate-aurora -top-50 -left-50"></div>
+        <div className="absolute w-190 h-190 bg-green-500 rounded-full blur-[200px] opacity-40 animate-aurora -top-50 -left-50"></div>
 
-        <div className="absolute w-175 h-175 bg-blue-500 rounded-full blur-[200px] opacity-40 animate-aurora2 -bottom-50 -right-50"></div>
+        <div className="absolute w-225 h-225 bg-blue-500 rounded-full blur-[200px] opacity-40 animate-aurora2 -bottom-75 -right-50"></div>
 
-        <div className="absolute w-175 h-175 bg-orange-500 rounded-full blur-[200px] opacity-30 animate-aurora3 top-[40%] left-[30%]"></div>
+        <div className="absolute w-225 h-225 bg-orange-500 rounded-full blur-[200px] opacity-30 animate-aurora3 top-[40%] left-[18%]"></div>
 
       </div>
       <Navbar />

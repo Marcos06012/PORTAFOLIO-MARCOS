@@ -3,23 +3,29 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 
+// 1. Importamos nuestro hook mágico
+import { useLanguage } from '../context/LanguageContext';
+
 export default function Hero() {
+    // 2. Extraemos 't' (las traducciones)
+    const { t } = useLanguage();
+
     return (
         <div className="flex items-center justify-center w-full min-h-screen px-6 overflow-hidden">
             <section id="inicio" className="text-center scroll-mt-45 max-w-5xl">
                 
-                {/* Nombre con Gradiente - Cambiado a whileInView */}
+                {/* Nombre con Gradiente - Usamos t.hero.greeting */}
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }} // once: false permite que repita
+                    viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-6xl md:text-8xl font-black mb-6 tracking-tighter py-7"
                 >
-                    Hola, soy <span className="bg-linear-to-r from-blue-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">Marcos</span>
+                    {t.hero.greeting} <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">Marcos</span>
                 </motion.h1>
 
-                {/* Rol Profesional */}
+                {/* Rol Profesional - Usamos t.hero.role y t.hero.description */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -28,14 +34,14 @@ export default function Hero() {
                     className="space-y-4"
                 >
                     <p className="text-lg md:text-2xl text-gray-300 font-medium">
-                        Ingeniero de Software en formación
+                        {t.hero.role}
                     </p>
                     <p className="text-sm md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                        Especializado en crear experiencias web modernas, escalables y centradas en el usuario desde El Salvador.
+                        {t.hero.description}
                     </p>
                 </motion.div>
 
-                {/* Botones de Acción */}
+                {/* Botones de Acción - Usamos t.hero.btn */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +53,7 @@ export default function Hero() {
                         href="#projects" 
                         className="group flex items-center gap-2 bg-white text-black px-8 py-3 rounded-full font-bold transition-all hover:bg-blue-500 hover:text-white"
                     >
-                        Ver Proyectos
+                        {t.hero.btn}
                         <HiArrowNarrowRight className="group-hover:translate-x-1 transition-transform" />
                     </a>
                     

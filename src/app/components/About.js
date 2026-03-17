@@ -15,7 +15,7 @@ export default function About() {
                 className="bg-gray-900/70 backdrop-blur-md hover:bg-gray-800/80 transition-all duration-300 p-10 rounded-3xl shadow-lg border border-gray-700/50"
             >
                 <h2 className="text-3xl font-bold mb-10 text-center">
-                    Sobre Mí
+                    Descripción Personal
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-10 items-center">
@@ -27,7 +27,7 @@ export default function About() {
                         transition={{ delay: 0.2, duration: 0.6 }}
                         className="flex justify-center"
                     >
-                        <div className="w-80 h-80 rounded-full bg-linear-to-r from-purple-500 to-blue-500 p-1">
+                        <div className="w-80 h-80 rounded-full bg-linear-to-r from-green-500 to-blue-500 p-1">
                             <div className="w-full h-full bg-gray-900 rounded-full flex items-center justify-center text-6xl font-bold">
                                 M
                             </div>
@@ -39,7 +39,7 @@ export default function About() {
                         initial={{ opacity: 0, x: 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4, duration: 0.6 }}
-                        className="text-lg leading-relaxed text-gray-300"
+                        className="text-lg leading-relaxed text-gray-300 text-justify"
                     >
                         <p>
                             Soy un desarrollador frontend apasionado por crear

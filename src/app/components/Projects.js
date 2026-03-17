@@ -1,6 +1,6 @@
 export default function Projects() {
     return (
-        <section className="py-20 text-center">
+        <section className="py-20 text-center min-h-screen scroll-mt-18" id="projects">
             <h2 className="text-3xl font-bold mb-10">
                 Proyectos
             </h2>

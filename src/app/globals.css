@@ -23,9 +23,11 @@ body {
   0% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(100px, 50px);
   }
+
   100% {
     transform: translate(0, 0);
   }
@@ -35,9 +37,11 @@ body {
   0% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(-120px, -80px);
   }
+
   100% {
     transform: translate(0, 0);
   }
@@ -47,9 +51,11 @@ body {
   0% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(80px, -100px);
   }
+
   100% {
     transform: translate(0, 0);
   }
@@ -87,6 +93,7 @@ html {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-50% - var(--gap)));
   }
@@ -96,6 +103,7 @@ html {
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(calc(-50% - var(--gap)));
   }
@@ -107,4 +115,77 @@ html {
 
 .animate-marquee-vertical {
   animation: marquee-vertical var(--duration, 40s) linear infinite;
+}
+
+/* CSS Code */
+.swiper-wrapper {
+  width: 100%;
+  height: max-content !important;
+  padding-bottom: 64px !important;
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+  position: relative;
+}
+
+/* globals.css */
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px !important; /* Ajusta la altura si quedan muy pegados */
+  left: 0 !important;
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* Espacio entre puntitos */
+  z-index: 10;
+}
+
+/* Para que los puntos individuales no se amontonen */
+.swiper-pagination-bullet {
+  margin: 0 2px !important; 
+  background: #4F46E5; /* El color que ya tenías */
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #4F46E5 !important;
+  width: 24px; /* Un toque pro: que el activo sea más largo */
+  border-radius: 4px;
+}
+
+.swiper-slide {
+  /* Suaviza el cambio de tamaño o escala si usas centeredSlides */
+  transition: all 1s ease-in-out;
+}
+
+/* Para que los puntos de la paginación no intenten ocupar todo el ancho */
+.custom-pagination.swiper-pagination-bullets {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    position: static !important; /* Quita el posicionamiento absoluto por defecto */
+}
+
+.custom-pagination .swiper-pagination-bullet {
+    margin: 0 !important; /* Quita márgenes que Swiper pone por defecto */
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #3b82f6 !important; /* Azul como el de tus iconos */
+    width: 20px;
+    border-radius: 10px;
+}
+
+/* Evita que Swiper oculte las flechas por defecto */
+.button-prev:after, .button-next:after {
+    display: none !important;
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-navigation-size: 30px; /* Por si quieres ajustar el tamaño */
 }

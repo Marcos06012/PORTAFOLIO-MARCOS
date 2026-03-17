@@ -14,12 +14,10 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-// Función utilitaria para clases (cn)
 function cn(...inputs) {
     return twMerge(clsx(inputs));
 }
 
-// Componente Marquee Base
 const Marquee = ({
     className,
     reverse,
@@ -33,7 +31,7 @@ const Marquee = ({
         <div
             {...props}
             className={cn(
-                "group flex overflow-hidden p-2 [--gap:1rem] row",
+                "group flex overflow-hidden p-2 [--gap:1rem] flex-row",
                 vertical && "flex-col",
                 className,
             )}
@@ -44,7 +42,7 @@ const Marquee = ({
                     <div
                         key={i}
                         className={cn(
-                            "flex shrink-0 justify-around gap:--gap",
+                            "flex shrink-0 justify-around gap-(--gap)", 
                             vertical ? "animate-marquee-vertical flex-col" : "animate-marquee flex-row",
                             reverse && "[animation-direction:reverse]",
                             pauseOnHover && "group-hover:[animation-play-state:paused]",
@@ -57,7 +55,6 @@ const Marquee = ({
     );
 };
 
-// Tus tecnologías
 const technologies = [
     { name: "HTML5", icon: <FaHtml5 className="text-orange-500" /> },
     { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" /> },
@@ -77,8 +74,8 @@ const TechCard = ({ name, icon }) => {
     return (
         <figure
             className={cn(
-                "relative w-55 cursor-pointer overflow-hidden rounded-xl border p-4",
-                "border-gray-50/10  hover:bg-gray-50/15 transition-all duration-300"
+                "relative w-52 cursor-pointer overflow-hidden rounded-xl border p-4",
+                "border-gray-50/10 hover:bg-gray-50/15 transition-all duration-300"
             )}
         >
             <div className="flex flex-row items-center gap-3">
@@ -99,15 +96,22 @@ export default function TechCarousel() {
     const secondRow = technologies.slice(technologies.length / 2);
 
     return (
-        /* 1. Ponemos el ID en el contenedor principal */
-        /* 2. Aseguramos que el scroll-mt sea suficiente para tu Navbar */
         <section
             id="herramientas"
-            className="relative w-full overflow-hidden py-20 scroll-mt-18"
+            className="relative w-full overflow-hidden py-20 scroll-mt-24 px-6"
         >
-            {/* El contenido interno (flex, h-125, etc.) va adentro, sin el ID */}
-            <div className="flex flex-col items-center justify-center min-h-125">
-                <h2 className="text-4xl font-bold mb-10 text-white">Habilidades Técnicas</h2>
+            <div className="flex flex-col items-center justify-center min-h-100">
+                
+                {/* Título Animado */}
+                <motion.h2 
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="text-3xl md:text-4xl font-bold mb-10 text-white tracking-tight"
+                >
+                    Habilidades Técnicas
+                </motion.h2>
 
                 <Marquee pauseOnHover className="[--duration:30s]">
                     {firstRow.map((tech) => (
@@ -121,7 +125,6 @@ export default function TechCarousel() {
                     ))}
                 </Marquee>
 
-                
             </div>
         </section>
     );

@@ -4,15 +4,19 @@ import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 
+import { useLanguage } from '../context/LanguageContext';
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 export default function Projects() {
     const slides = [1, 2, 3, 4, 5, 6];
+    const { t } = useLanguage();
 
     return (
-        <section className="py-20 px-6 text-center min-h-screen scroll-mt-16" id="projects">
+        // 1 & 2: Quitamos px-6 y añadimos overflow-hidden
+        <section className="py-20 text-center min-h-screen scroll-mt-16 overflow-hidden" id="projects">
             
             {/* Título Animado */}
             <motion.h2 
@@ -20,9 +24,10 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl md:text-4xl font-bold mb-10 text-white tracking-tight"
+                // 3: Añadimos px-6 solo al título
+                className="text-3xl md:text-4xl font-bold mb-10 text-white tracking-tight px-6"
             >
-                Proyectos Destacados
+                {t.projects.title}
             </motion.h2>
 
             {/* Contenedor del Carrusel Animado */}
@@ -31,7 +36,8 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="w-full max-w-7xl mx-auto"
+                // 4: w-full sin límites de max-w
+                className="w-full"
             >
                 <Swiper
                     modules={[Pagination, Autoplay, Navigation]}
@@ -55,21 +61,20 @@ export default function Projects() {
                         1028: { slidesPerView: 2, spaceBetween: 20 },
                         0: { slidesPerView: 1, spaceBetween: 10 }
                     }}
-                    className="mySwiper relative pb-20" // pb-20 da espacio para que los puntos no tapen las tarjetas
+                    className="mySwiper relative pb-20 w-full"
                 >
                     {slides.map((num) => (
                         <SwiperSlide key={num}>
-                            {/* Tarjeta con efecto Hover Senior */}
-                            <div className="group bg-gray-900/80 backdrop-blur-sm border border-white/10 rounded-3xl h-96 flex justify-center items-center shadow-xl hover:border-blue-500/50 hover:bg-gray-800 transition-all duration-500 cursor-grab active:cursor-grabbing">
+                            {/* Tarjeta con efecto Hover Senior (Añadido mx-4 en móvil para que no se vea cortado bruscamente) */}
+                            <div className="group bg-gray-900/80 backdrop-blur-sm border border-white/10 rounded-3xl h-96 flex justify-center items-center shadow-xl hover:border-blue-500/50 hover:bg-gray-800 transition-all duration-500 cursor-grab active:cursor-grabbing mx-4 md:mx-0">
                                 <span className="text-3xl font-semibold text-gray-500 group-hover:text-blue-400 transition-colors uppercase tracking-widest">
-                                    Proyecto {num}
+                                    {t.projects.demo} {num}
                                 </span>
                             </div>
                         </SwiperSlide>
                     ))}
 
                     {/* CONTENEDOR DE CONTROLES (Flechas + Puntos) */}
-                    {/* Añadimos z-20 para asegurar que siempre se puedan clickear */}
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center justify-center gap-4 py-2 z-20">
 
                         {/* Flecha Izquierda (<) */}
@@ -77,7 +82,7 @@ export default function Projects() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
                         </button>
 
-                        {/* Los Puntos (Pagination) - Sintaxis corregida */}
+                        {/* Los Puntos (Pagination) - Sintaxis corregida para Tailwind */}
                         <div className="custom-pagination !static !w-auto flex items-center gap-2"></div>
 
                         {/* Flecha Derecha (>) */}

@@ -1,7 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 
+import { useLanguage } from '../context/LanguageContext';
+
+
 export default function About() {
+    const { t } = useLanguage();
     return (
         <section
             id="about"
@@ -23,7 +27,9 @@ export default function About() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-3xl md:text-4xl font-bold mb-10 text-center text-white tracking-tight"
                 >
-                    Descripción Personal
+
+                    {t.about.title}
+
                 </motion.h2>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -51,26 +57,9 @@ export default function About() {
                         transition={{ duration: 0.6, delay: 0.5 }}
                         className="text-base md:text-lg leading-relaxed text-gray-300 text-justify space-y-4"
                     >
-                        <p>
-                            Soy un desarrollador frontend apasionado por crear
-                            experiencias web modernas, intuitivas y visualmente
-                            atractivas. Me gusta transformar ideas en interfaces
-                            funcionales que ofrezcan una excelente experiencia
-                            de usuario.
-                        </p>
-
-                        <p>
-                            Trabajo principalmente con <span className="text-white font-medium italic">HTML, CSS y JavaScript</span>,
-                            y estoy ampliando mis conocimientos en tecnologías
-                            modernas del ecosistema frontend.
-                        </p>
-
-                        <p>
-                            Siempre estoy aprendiendo nuevas herramientas,
-                            explorando tendencias del desarrollo web y buscando
-                            mejorar mis habilidades para construir productos
-                            cada vez mejores.
-                        </p>
+                        <p>{t.about.p1}</p>
+                        <p>{t.about.p2}</p>
+                        <p>{t.about.p3}</p>
                     </motion.div>
                 </div>
             </motion.div>

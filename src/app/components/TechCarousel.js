@@ -14,6 +14,9 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { useLanguage } from '../context/LanguageContext';
+
+
 function cn(...inputs) {
     return twMerge(clsx(inputs));
 }
@@ -95,6 +98,8 @@ export default function TechCarousel() {
     const firstRow = technologies.slice(0, technologies.length / 2);
     const secondRow = technologies.slice(technologies.length / 2);
 
+    const { t } = useLanguage();
+
     return (
         <section
             id="herramientas"
@@ -110,7 +115,8 @@ export default function TechCarousel() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-3xl md:text-4xl font-bold mb-10 text-white tracking-tight"
                 >
-                    Habilidades Técnicas
+                    {t.tech.title}
+
                 </motion.h2>
 
                 <Marquee pauseOnHover className="[--duration:30s]">

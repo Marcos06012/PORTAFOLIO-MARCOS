@@ -30,6 +30,13 @@ const translations = {
         projects: {
             title: "Proyectos Destacados",
             demo: "Proyecto"
+        },
+
+        contact: {
+            title: "Disponible para nuevos proyectos",
+            title2: "¿Tienes un proyecto en mente?",
+            p1: "Hablemos sobre cómo puedo ayudarte a construir soluciones digitales eficientes y modernas.",
+            card1: " "
         }
     },
     en: {

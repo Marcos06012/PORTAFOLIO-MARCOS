@@ -12,7 +12,7 @@ export default function Hero() {
 
     return (
         <div className="flex items-center justify-center w-full min-h-screen px-6 overflow-hidden">
-            <section id="inicio" className="text-center scroll-mt-45 max-w-5xl">
+            <section id="inicio" className="text-center scroll-mt-45 max-w-5xl py-20">
                 
                 {/* Nombre con Gradiente - Usamos t.hero.greeting */}
                 <motion.h1
@@ -22,7 +22,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-6xl md:text-8xl font-black mb-6 tracking-tighter py-7"
                 >
-                    {t.hero.greeting} <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">Marcos</span>
+                    {t.hero.greeting} <span className="bg-linear-to-r from-blue-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">Marcos</span>
                 </motion.h1>
 
                 {/* Rol Profesional - Usamos t.hero.role y t.hero.description */}

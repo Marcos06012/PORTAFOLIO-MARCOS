@@ -95,7 +95,7 @@ html {
   }
 
   to {
-    transform: translateX(calc(-50% - var(--gap)));
+    transform: translateX(calc(-50%));
   }
 }
 
@@ -107,6 +107,10 @@ html {
   to {
     transform: translateY(calc(-50% - var(--gap)));
   }
+}
+
+:root {
+  --gap: 1.5rem; /* equivale a gap-6 de Tailwind */
 }
 
 .animate-marquee {

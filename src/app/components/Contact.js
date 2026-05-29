@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope, FaCopy, FaCheck } from "react-icons/fa";
+import { FaGithub, FaWhatsapp, FaEnvelope, FaCopy, FaCheck } from "react-icons/fa";
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Contact() {
     const [copied, setCopied] = useState(false);
     const email = "alasmarcos60@gmail.com";
+    const { t } = useLanguage();
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(email);
@@ -21,66 +23,111 @@ export default function Contact() {
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
                 <span className="text-[10px] md:text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">
-                    Disponible para nuevos proyectos
+                    {/* Texto dinámico */}
+                    {t.contact.title}
                 </span>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tighter">
-                ¿Tienes un proyecto en mente?
+                {/* Texto dinámico */}
+                {t.contact.title2}
             </h2>
             <p className="text-gray-400 mb-12 max-w-md text-center">
-                Hablemos sobre cómo puedo ayudarte a construir soluciones digitales eficientes y modernas.
+                {/* Texto dinámico */}
+                {t.contact.p1}
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
-                
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl px-4 md:px-0">
+
                 {/* Tarjeta de Email con Copiado Automático */}
-                <div 
+                <div
                     onClick={copyToClipboard}
-                    className="group relative p-8 rounded-3xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-500 cursor-pointer overflow-hidden"
+                    className="group relative p-8 rounded-3xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-blue-500/30 hover:scale-[1.02] transform transition-all duration-500 cursor-pointer overflow-hidden shadow-xl"
                 >
-                    <div className="absolute -inset-px bg-linear-to-r from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    <div className="relative flex flex-col items-start gap-4">
+                    {/* Capa de iluminación interna interactiva */}
+                    <div className="absolute -inset-px bg-gradient-to-r from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div className="relative flex flex-col items-start gap-4 z-10">
                         <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 group-hover:scale-110 transition-transform duration-500">
                             <FaEnvelope size={24} />
                         </div>
                         <div className="w-full">
-                            <p className="text-[10px] text-gray-500 uppercase font-black tracking-[0.2em] mb-1">Escríbeme</p>
+                            {/* Texto dinámico */}
+                            <p className="text-[10px] text-gray-500 uppercase font-black tracking-[0.2em] mb-1">
+                                {t.contact.card1}
+                            </p>
                             <div className="flex justify-between items-center w-full">
-                                <p className="text-sm md:text-lg text-white font-medium truncate mr-2">{email}</p>
-                                {copied ? <FaCheck className="text-green-500" /> : <FaCopy className="text-gray-600 group-hover:text-white transition-colors" />}
+                                <p className="text-sm md:text-lg text-white font-medium truncate mr-2 select-all">
+                                    {email}
+                                </p>
+                                <div className="flex-shrink-0">
+                                    {copied ? (
+                                        <FaCheck className="text-green-500 scale-110 transition-transform" />
+                                    ) : (
+                                        <FaCopy className="text-gray-500 group-hover:text-white transition-colors duration-300" />
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Tarjeta de GitHub */}
-                <a 
-                    href="https://github.com/Marcos06012" 
+                <a
+                    href="https://github.com/Marcos06012"
                     target="_blank"
-                    className="group relative p-8 rounded-3xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-500 overflow-hidden"
+                    rel="noopener noreferrer"
+                    className="group relative p-8 rounded-3xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-purple-500/30 hover:scale-[1.02] transform transition-all duration-500 overflow-hidden shadow-xl"
                 >
-                    <div className="absolute -inset-px bg-linear-to-r from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    <div className="relative flex flex-col items-start gap-4">
+                    {/* Capa de iluminación interna interactiva */}
+                    <div className="absolute -inset-px bg-gradient-to-r from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div className="relative flex flex-col items-start gap-4 z-10 w-full">
                         <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 group-hover:scale-110 transition-transform duration-500">
                             <FaGithub size={24} />
                         </div>
-                        <div>
-                            <p className="text-[10px] text-gray-500 uppercase font-black tracking-[0.2em] mb-1">Mira mi código</p>
-                            <p className="text-lg text-white font-medium">github.com/Marcos06012</p>
+                        <div className="w-full">
+                            {/* Texto dinámico */}
+                            <p className="text-[10px] text-gray-500 uppercase font-black tracking-[0.2em] mb-1">
+                                {t.contact.card2}
+                            </p>
+                            <p className="text-sm md:text-lg text-white font-medium truncate group-hover:text-purple-300 transition-colors duration-300">
+                                github.com/Marcos06012
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                {/* Tarjeta de WhatsApp */}
+                <a
+                    href="https://wa.me/78056674"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative p-8 rounded-3xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-emerald-500/30 hover:scale-[1.02] transform transition-all duration-500 overflow-hidden shadow-xl"
+                >
+                    {/* CORRECCIÓN: Iluminación verde temática para WhatsApp */}
+                    <div className="absolute -inset-px bg-linear-to-r from-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div className="relative flex flex-col items-start gap-4 z-10 w-full">
+                        {/* CORRECCIÓN: Estilo de fondo del icono en verde */}
+                        <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform duration-500">
+                            <FaWhatsapp size={24} />
+                        </div>
+                        <div className="w-full">
+                            {/* Texto dinámico */}
+                            <p className="text-[10px] text-gray-500 uppercase font-black tracking-[0.2em] mb-1">
+                                {t.contact.card3}
+                            </p>
+                            <p className="text-sm md:text-lg text-white font-medium truncate group-hover:text-emerald-300 transition-colors duration-300">
+                                +503 78056674
+                            </p>
                         </div>
                     </div>
                 </a>
 
             </div>
 
-            {/* LinkedIn u otra red (Opcional, centrado abajo) */}
-            <div className="mt-12 flex gap-8">
-                <a href="#" className="text-gray-500 hover:text-white transition-colors text-sm font-bold tracking-widest uppercase">LinkedIn</a>
-                <a href="#" className="text-gray-500 hover:text-white transition-colors text-sm font-bold tracking-widest uppercase">Instagram</a>
-            </div>
+
         </section>
     );
 }

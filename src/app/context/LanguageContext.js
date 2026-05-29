@@ -36,8 +36,39 @@ const translations = {
             title: "Disponible para nuevos proyectos",
             title2: "¿Tienes un proyecto en mente?",
             p1: "Hablemos sobre cómo puedo ayudarte a construir soluciones digitales eficientes y modernas.",
-            card1: " "
-        }
+            card1: "Escríbeme",
+            card2: "Mira mi código",
+            card3: "Escríbeme por WhatsApp"
+        },
+
+        cardAboutMe: {
+            openToWork: "Disponible para trabajar",
+            title: "Desarrollador Web",
+            location: "Basado en El Salvador"
+        },
+
+        projects: {
+            title: "Proyectos Destacados",
+            items: [
+                {
+                    title: "StarFly",
+                    tags: ["React", "Tailwind CSS", "Framer Motion"],
+                    description: "Plataforma interactiva de reserva de vuelos, hoteles y transporte. Enfocada en una arquitectura UI modular, navegación fluida entre páginas y validaciones estrictas de formularios para una UX impecable.",
+                    index: "/01",
+                    demo:"https://proyecto-final-diseno-web.vercel.app/",
+                    image: "StarFly.png"
+                },
+                {
+                    title: "Gestor de Tareas",
+                    tags: ["Next.js", "Node.js", "Express", "REST API"],
+                    description: "Aplicación Full-Stack para la gestión de productividad. Implementa una arquitectura cliente-servidor con APIs RESTful optimizadas, control de estados y persistencia de datos en una base de datos centralizada.",
+                    index: "/02",
+                    demo: "https://gestor-de-tareas-frontend-xi.vercel.app/",
+                    image: "GestorDeTareas.png"
+                }
+            ]
+        },
+
     },
     en: {
         nav: {
@@ -66,22 +97,56 @@ const translations = {
         projects: {
             title: "Featured Projects",
             demo: "Project"
+        },
+
+        contact: {
+            title: "Available for new projects",
+            title2: "Do you have a project in mind?",
+            p1: "Let's talk about how I can help you build efficient and modern digital solutions.",
+            card1: "Write me",
+            card2: "View my code",
+            card3: "Write me on WhatsApp"
+        },
+
+        cardAboutMe: {
+            openToWork: "Available for work",
+            title: "Web Developer",
+            location: "Based in El Salvador"
+        },
+
+        projects: {
+            title: "Featured Projects",
+            items: [
+                {
+                    title: "StarFly",
+                    tags: ["React", "Tailwind CSS", "Framer Motion"],
+                    description: "Interactive flight, hotel, and transport booking platform. Focused on a modular UI architecture, fluid multi-page navigation, and strict form validation for an impeccable UX.",
+                    index: "/01",
+                    demo:"https://proyecto-final-diseno-web.vercel.app/",
+                    image: "StarFly.png"
+                },
+                {
+                    title: "Task Manager",
+                    tags: ["Next.js", "Node.js", "Express", "REST API"],
+                    description: "Full-Stack application for productivity management. Features a client-server architecture with optimized RESTful APIs, state management, and data persistence in a centralized database.",
+                    index: "/02",
+                    demo: "https://gestor-de-tareas-frontend-xi.vercel.app/",
+                    image: "GestorDeTareas.png"
+                }
+            ]
         }
     }
+
 };
 
 // 2. CREAMOS EL CONTEXTO
 const LanguageContext = createContext();
 
-// 3. EL PROVEEDOR: Este componente envolverá tu aplicación
 export const LanguageProvider = ({ children }) => {
-    // Iniciamos en español por defecto
     const [language, setLanguage] = useState('es');
 
-    // 't' será la variable mágica que usaremos en todos lados para sacar el texto
     const t = translations[language];
 
-    // Función para cambiar de idioma
     const toggleLanguage = (lang) => {
         setLanguage(lang);
     };
@@ -93,5 +158,4 @@ export const LanguageProvider = ({ children }) => {
     );
 };
 
-// 4. UN HOOK PERSONALIZADO: Para no tener que escribir mucho código en cada componente
 export const useLanguage = () => useContext(LanguageContext);

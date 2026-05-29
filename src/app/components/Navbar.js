@@ -1,16 +1,13 @@
 "use client";
+import Image from 'next/image';
 import { useState, useEffect } from "react";
-// 1. Importamos el hook mágico que creamos en el paso anterior
-// (Asegúrate de que la ruta coincida con donde guardaste la carpeta 'context')
+import { motion } from "framer-motion"; // Asegúrate de tener importado motion
 import { useLanguage } from "../context/LanguageContext"; 
 
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState("inicio");
-    
-    // 2. Extraemos las herramientas de idioma
     const { language, toggleLanguage, t } = useLanguage();
 
-    // Lógica para detectar la sección activa (Se mantiene intacta)
     useEffect(() => {
         const handleScroll = () => {
             const sections = ["inicio", "about", "herramientas", "projects", "contact"];
@@ -29,7 +26,6 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // 3. Creamos un arreglo con los IDs y sus traducciones dinámicas
     const navItems = [
         { id: "inicio", label: t.nav.home },
         { id: "about", label: t.nav.about },
@@ -39,28 +35,45 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="flex justify-between items-center p-6 bg-black/20 fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/10">
-            <h1 className="text-xl font-bold tracking-widest text-white">PORTAFOLIO</h1>
+        <nav className="flex justify-between items-center px-8 py-4 bg-black/20 fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/10 h-16">
+            
+            {/* 1. Extremo Izquierdo: Título/Logo */}
+            <div className="w-1/4 flex justify-start">
+                <h1 className="text-xl font-bold tracking-widest text-white select-none">PORTAFOLIO</h1>
+            </div>
 
-            {/* Agrupamos la lista y el botón de idiomas para que queden juntos a la derecha */}
-            <div className="flex items-center gap-6">
-                
-                {/* Lista de Navegación Mapeada */}
-                <ul className="flex gap-4 items-center hidden md:flex">
-                    {navItems.map((item) => (
-                        <li key={item.id}>
-                            <a 
-                                href={`#${item.id}`} 
-                                className={`relative px-5 py-2 rounded-lg text-sm font-bold transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-120 inline-block ${activeSection === item.id ? "text-white" : "text-gray-300"}`}
-                            >
-                                {item.label}
-                                <span className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ${activeSection === item.id ? "w-full" : "w-0"}`} />
-                            </a>
-                        </li>
-                    ))}
+            {/* 2. Centro Absolute con el efecto de la Línea Azul Animada */}
+            <div className="hidden md:flex w-2/4 justify-center">
+                <ul className="flex gap-2 items-center bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-full backdrop-blur-xs relative">
+                    {navItems.map((item) => {
+                        const isSelected = activeSection === item.id;
+                        return (
+                            <li key={item.id} className="relative">
+                                <a 
+                                    href={`#${item.id}`} 
+                                    className={`relative px-4 py-2 rounded-full text-xs font-bold transition-colors duration-300 inline-block z-10 ${
+                                        isSelected ? "text-white" : "text-gray-400 hover:text-white/80"
+                                    }`}
+                                >
+                                    {item.label}
+
+                                    {/* LÍNEA AZUL ANIMADA MÁGICA: Viaja entre botones gracias a layoutId */}
+                                    {isSelected && (
+                                        <motion.div
+                                            layoutId="activeBorder"
+                                            className="absolute bottom-0 left-2 right-2 h-[2px] bg-blue-500 rounded-full shadow-[0_1px_8px_rgba(59,130,246,0.6)]"
+                                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                        />
+                                    )}
+                                </a>
+                            </li>
+                        );
+                    })}
                 </ul>
+            </div>
 
-                {/* 4. Selector de Idiomas (Botones ES / EN) */}
+            {/* 3. Extremo Derecho: Selector de Idiomas */}
+            <div className="w-1/4 flex justify-end">
                 <div className="flex bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-sm">
                     <button 
                         onClick={() => toggleLanguage('es')}
@@ -75,8 +88,8 @@ export default function Navbar() {
                         EN
                     </button>
                 </div>
-
             </div>
+
         </nav>
     );
 }

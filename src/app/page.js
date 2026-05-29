@@ -4,6 +4,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import TechCarousel from "./components/TechCarousel";
+import Footer from "./components/Footer";
 
 
 
@@ -25,6 +26,8 @@ export default function Home() {
       <TechCarousel />
       <Projects />
       <Contact />
+      <Footer />
+
     </main>
   );
 }
